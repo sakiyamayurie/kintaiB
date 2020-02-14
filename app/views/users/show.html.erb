@@ -24,14 +24,22 @@
 
 
 <div>
+  <tr>
+    <td rowspan="2">日付</td>
+    <td rowspan="2">曜日</td>
+    <td colspan="2">出社</td>
+    <td colspan="2">退社</td>
+    <td rowspan="2">在社時間</td>
+    <th>備考</th>
+  </tr>
   <table class="table table-bordered table-condenses table-hover" id="table-attendances">
     <thead>
       <tr>
-        <th>日付</th>
-        <th>曜日</th>
+        <td rowspan="2">日付</td>
+        <td rowspan="2">曜日</td>
         <th>出社</th>
         <th>退社</th>
-        <th>在社時間</th>
+        <td rowspan="2">在社時間</td>
         <th>備考</th>
       </tr>
     </thead>
@@ -57,9 +65,9 @@
       <!--rowspan:縦結合、colspan：横結合-->
       <tr>
         <td colspan="2">累計日数</td>
-        <td colspan="2">総合勤務時間</td>
-        <td colspan="2">累計在社時間</td>
-        <td rowspan="2"></td>
+        <td colspan="2"></td>
+        <td colspan="1">累計在社時間</td>
+        <td></td>
       </tr>
       <tr>
         <td colspan="2"><%= @attendances.count %></td>
