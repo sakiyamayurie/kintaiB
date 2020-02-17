@@ -51,10 +51,10 @@
           <td><%= l(day.worked_on, format: :short) %></td>
           <td><%= $days_of_the_week[day.worked_on.wday] %></td>
           <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
-          <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
+          <td><%= l(day.started_at, ) if day.started_at.present? %></td>
           <td></td>
           <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
-          <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
+          <td><%= l(day.finished_at, ) if day.finished_at.present? %></td>
           <td></td>
           <td></td>
           <td>
