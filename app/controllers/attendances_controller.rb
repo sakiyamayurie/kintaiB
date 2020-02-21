@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_user, only: :edit_one_month
+  before_action :set_user, only: [:edit_one_month, :update_one_month]
   before_action :logged_in_user, only: [:update, :edit_one_month]
   before_action :set_one_month, only: :edit_one_month
   
@@ -26,9 +26,18 @@ class AttendancesController < ApplicationController
   end
   
   def edit_one_month
-    
   end
   
   def update_one_month
+    attendances_params.each do |id, item|
+      attendance = Attendance.find(id)
+      attendance.update_attributes!(item)
+    end
   end
+  
+  private
+    # 1ヶ月分の勤怠情報を扱います。
+    def attendances_params
+      params.require(:user).permit(attendances: [:started_at, :finished_at, :note])[:attendances]
+    end
 end 
