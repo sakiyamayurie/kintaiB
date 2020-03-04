@@ -51,23 +51,19 @@
       <% @attendances.each do |day| %>
         <tr>
           <td><%= l(day.worked_on, format: :short) %></td>
-          <td><%= $days_of_the_week[day.worked_on.wday] %>
-            <% if day.worked_on.wday = 0 %>
-                  class= 'text-danger'
-            <% elsif day.worked_on.wday = 6 %>
-                  class= 'text-info'
-            <% else %>
-            <% end %>
+          <td class="<%= test(day) %>">
+            <%= $days_of_the_week[day.worked_on.wday] %>
+            
           </td>
-          <td></td>
-          <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
+          <td><%= day.started_at.hour if day.started_at %></td>
+          <td><%= day.started_at.min if day.started_at %></td>
           <td>
             <% if (Date.current == day.worked_on) && day.started_at.nil? %>
               <%= link_to "出社", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
             <% end %>
           </td>
-          <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
-          <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
+          <td><%= day.finished_at.hour if day.finished_at %></td>
+          <td><%= day.finished_at.min if day.finished_at %></td>
           <td>
             <% if (Date.current == day.worked_on) && day.started_at.present? %>
               <%= link_to "退社", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
