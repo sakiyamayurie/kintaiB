@@ -5,7 +5,7 @@ module UsersHelper
     format("%.2f", ((time.hour * 60) + time.min) / 60.0)
   end 
   
-  def test(day)
+  def week_color(day)
     if day.worked_on.wday == 0
       "text-danger"
     elsif day.worked_on.wday == 6
