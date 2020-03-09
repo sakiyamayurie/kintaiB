@@ -7,9 +7,13 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(page: params[:page])
+  end
+  
+  def search
     if params[:name].present?
       @users = @users.get_by_name
       params[:name]
+      render :index
     end
   end
   

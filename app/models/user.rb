@@ -50,8 +50,10 @@ class User < ApplicationRecord
   end
   
   #scope あいまい検索
-  scope :get_by_name, ->(name) {
+  def self.search(search)
+    scope :get_by_name, ->(name) {
     where("name_like ?", "%#{name}%")
-  }
+    }
+  end
     
 end
