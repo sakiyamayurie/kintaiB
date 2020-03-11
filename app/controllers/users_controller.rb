@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
   
   def search
+    @users = User.where('title LIKE(?)', "%#{params[:keyword]}%")
     if params[:name].present?
       @users = @users.get_by_name
       params[:name]
