@@ -3,10 +3,9 @@
 
 <div>
   <h4>ユーザー名検索</h4>
-  <%= form_tag(users_path, method:"get") do %>
+  <%= form_tag(users_path, method: :get) do %>
     <%= text_field_tag :name, params[:name] %>
-    <%= submit_tag '検索', name: nil %>
-    <%= User.where('name like ?', '%%') %>
+    <%= submit_tag '検索' %>
   <% end %>
 </div>
 
