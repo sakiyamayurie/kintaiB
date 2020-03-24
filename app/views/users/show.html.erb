@@ -64,13 +64,15 @@
           <td><%= day.finished_at.hour if day.finished_at %></td>
           <td><%= day.finished_at.min.floor_to(15) if day.finished_at %></td>
           <td>
-            <% if (Date.current == day.worked_on) && day.started_at.present? %>
-              <%= link_to "退社", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
+            <% if btn_text = attendance_state(day) %>
+              <% if (Date.current == day.worked_on) && day.started_at.present? %>
+                <%= link_to "退社", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
+              <% end %>
             <% end %>
           </td>
           <td>
             <% if day.started_at.present? && day.finished_at.present? %>
-              <%= str_times = working_times(day.started_at, day.finished_at %>
+              <%= str_times = working_times(day.started_at, day.finished_at) %>
               <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
             <% end %>
           </td>
