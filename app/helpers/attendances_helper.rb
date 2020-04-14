@@ -1,4 +1,5 @@
 module AttendancesHelper
+  require 'rounding'
   
   def attendance_state(attendance)
     # 受け取ったattendanceオブジェクトが当日と一致するか評価します。
