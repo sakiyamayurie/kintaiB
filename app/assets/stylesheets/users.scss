@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+p {
+  margin: -15px;
+
+  }
+
 /* ユーザー勤怠情報テーブル */
 
 #table-attendances {
@@ -19,6 +24,7 @@
     vertical-align: middle;
     text-align:center;
   }
+
 }
 
 /* 入力フォーム */
